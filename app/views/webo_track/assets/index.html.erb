@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Assets List</h1>
+
+<div id="type_blogs">
+  <% @assets.each do |asset| %>
+    <div>
+      <p>
+        <strong>Name:</strong>
+        <%= asset.name %>
+      </p>
+      <p>
+        <strong>Description:</strong>
+        <%= asset.description %>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New Asset", assets_new_path %>
