@@ -1,5 +1,7 @@
 module WeboTrack
   class WebousersController < ApplicationController
+    before_action :get_user, only: [:edit_user_to_assign_asset, :update_user_with_asset]
+
     def new
       @webouser = Webouser.new
     end
@@ -18,16 +20,18 @@ module WeboTrack
       @webousers = Webouser.all
     end
 
-    def assign_asset_edit
-      @webouser = Webouser.find(params[:id])
+    def edit_user_to_assign_asset
       @assets = Asset.all
     end
 
-    def assign_asset_update
-      @webouser = Webouser.find(params[:id])
+    def update_user_with_asset
       @webouser.update(user_params)
 
       redirect_to users_path
+    end
+
+    def get_user
+      @webouser = Webouser.find(params[:id])
     end
 
     private
